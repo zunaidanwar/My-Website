@@ -1,0 +1,223 @@
+/*
+ * CSS STYLING FOR RAHIORIGINALS WEBSITE
+ * Palette: Based on our approved terracotta/sage palette
+ * - #CBD97E (Dusty Terracotta/Rose) - Main Accent
+ * - #87B7A4 (Light Sage) - Secondary Accent
+ * - #6B705C (Deep Olive) - Text/Headers
+ * - #F7F4EB (Creamy Off-White) - Main Background
+ */
+
+:root {
+    --color-primary: #6B705C;
+    --color-secondary: #87B7A4;
+    --color-accent: #CBD97E;
+    --color-background: #F7F4EB;
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Roboto', sans-serif;
+}
+
+/* --- Base Styles --- */
+body {
+    font-family: var(--font-sans);
+    color: var(--color-primary);
+    background-color: var(--color-background);
+    margin: 0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+p {
+    font-weight: 300;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 400;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+.cta-button:hover {
+    background-color: #a4b493;
+}
+
+/* --- Header & Navigation --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 20px 0;
+    background-color: var(--color-background);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+}
+
+.site-header .logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--color-primary);
+}
+
+/* --- Hero Section --- */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-background);
+    position: relative;
+    overflow: hidden;
+    background-image: url('https://via.placeholder.com/1920x1080.png?text=Stunning+Bag+Lifestyle+Image');
+    background-size: cover;
+    background-position: center;
+}
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+}
+.hero-content h1 {
+    font-size: 3rem;
+    color: white;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
+    margin-bottom: 20px;
+}
+
+/* --- Content Sections --- */
+.section {
+    padding: 80px 0;
+    text-align: center;
+}
+.section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+#story {
+    background-color: var(--color-background);
+}
+
+#collection {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+}
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 40px;
+}
+.product-item img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+#commitment {
+    background-color: var(--color-background);
+}
+
+#testimonials {
+    background-color: var(--color-primary);
+    color: white;
+}
+.testimonial-carousel {
+    display: flex;
+    overflow-x: auto;
+    gap: 20px;
+    padding: 20px 0;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+.testimonial-carousel::-webkit-scrollbar {
+    display: none;
+}
+.testimonial-item {
+    min-width: 80%;
+    max-width: 80%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 8px;
+    font-style: italic;
+    text-align: left;
+}
+.testimonial-item footer {
+    font-style: normal;
+    font-weight: 700;
+    margin-top: 10px;
+}
+
+/* --- Footer --- */
+.site-footer {
+    background-color: var(--color-primary);
+    color: white;
+    text-align: center;
+    padding: 60px 0;
+}
+.footer-cta h3 {
+    color: white;
+    margin-bottom: 10px;
+}
+.email-signup {
+    margin: 20px auto;
+    max-width: 400px;
+    display: flex;
+}
+.email-signup input {
+    flex-grow: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+.email-signup button {
+    background-color: var(--color-accent);
+    color: var(--color-primary);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 0 4px 4px 0;
+}
+.social-links a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
+.social-links a:hover {
+    color: var(--color-accent);
+}
