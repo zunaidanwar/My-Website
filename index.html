@@ -3,103 +3,487 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RahiOriginals - Handcrafted Bags with a Conscience</title>
+    <title>Rahi Originals - Handcrafted Bags with a Legacy</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Rahi Originals",
+          "url": "http://www.rahioriginals.com",
+          "logo": "http://www.rahioriginals.com/rahi-originals-logo.png",
+          "sameAs": [
+            "https://www.instagram.com/rahioriginals",
+            "https://www.facebook.com/rahioriginals",
+            "https://www.pinterest.com/rahioriginals"
+          ]
+        },
+        {
+          "@type": "LocalBusiness",
+          "name": "Rahi Originals",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "[Your Street Address]",
+            "addressLocality": "[Your City]",
+            "addressRegion": "[Your State]",
+            "postalCode": "[Your Postal Code]",
+            "addressCountry": "IN"
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "[Your Latitude]",
+            "longitude": "[Your Longitude]"
+          },
+          "url": "http://www.rahioriginals.com",
+          "telephone": "[Your Phone Number]",
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": [
+                "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
+              ],
+              "opens": "[09:00]",
+              "closes": "[19:00]"
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "url": "http://www.rahioriginals.com",
+          "name": "Rahi Originals",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": "http://www.rahioriginals.com/shop?q={search_term_string}",
+            "query-input": "required name=search_term_string"
+          }
+        },
+        {
+          "@type": "WebPage",
+          "@id": "http://www.rahioriginals.com/index.html#shop",
+          "url": "http://www.rahioriginals.com/index.html#shop",
+          "name": "Shop - Rahi Originals",
+          "description": "Explore our collection of handcrafted bags."
+        }
+      ]
+    }
+    </script>
+    
+    <style>
+        /* ========================================================================= */
+        /* --- GLOBAL & CORE STYLES --- */
+        /* ========================================================================= */
+        :root {
+            --color-primary: #3B2E40; /* Deep Purple-Brown for Text & Headers */
+            --color-secondary: #D07A3B; /* Burnt Orange for Accents */
+            --color-background: #F7F7F7; /* Light Gray for Background */
+            --color-text-light: #F7F7F7;
+            --color-neutral: #888;
+
+            --font-serif: 'Cormorant Garamond', serif;
+            --font-sans: 'Montserrat', sans-serif;
+            --header-height: 80px;
+            --content-padding-top: 120px; /* NEW: Added to fix overlap with fixed header */
+        }
+
+        /* Basic Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--color-primary);
+            background-color: var(--color-background);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding-top: var(--content-padding-top); /* NEW: Uses the new variable for top padding */
+            padding-bottom: 60px;
+            text-align: center;
+        }
+
+        h1 { font-size: 3rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.8rem; }
+        h1, h2, h3 { font-family: var(--font-serif); font-weight: 700; color: var(--color-primary); }
+
+        p { font-size: 1rem; line-height: 1.8; }
+
+        a {
+            text-decoration: none;
+            color: var(--color-primary);
+        }
+
+        /* ========================================================================= */
+        /* --- HEADER & NAVIGATION --- */
+        /* ========================================================================= */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: var(--header-height);
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--color-primary);
+        }
+
+        .nav-menu a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            margin-left: 2rem;
+            letter-spacing: 1px;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--color-secondary);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background-color: var(--color-secondary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* ========================================================================= */
+        /* --- PAGE-SPECIFIC LAYOUTS --- */
+        /* ========================================================================= */
+        
+        /* --- HOME PAGE --- */
+        #home {
+            background: linear-gradient(rgba(247, 247, 247, 0.7), rgba(247, 247, 247, 0.7)), url('https://via.placeholder.com/1920x1080/E5D3BD/524330?text=Handcrafted+Bags');
+            background-size: cover;
+            background-position: center;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        #home .hero-text h1 {
+            font-size: 4.5rem;
+            color: var(--color-primary);
+            margin-bottom: 20px;
+        }
+
+        #home .hero-text p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+            margin-bottom: 40px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+            text-transform: uppercase;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        /* --- ABOUT US PAGE --- */
+        #about {
+            background-color: var(--color-background);
+        }
+
+        #about .about-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+            text-align: left;
+        }
+
+        #about .about-text {
+            flex: 1;
+        }
+
+        #about .about-text h2 {
+            margin-bottom: 20px;
+        }
+
+        #about .about-image {
+            flex: 1;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* --- SHOP PAGE --- */
+        #shop {
+            background-color: var(--color-background);
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .product-item {
+            text-align: center;
+            position: relative;
+            transition: transform 0.3s ease;
+        }
+
+        .product-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-item h3 {
+            margin-top: 20px;
+            font-size: 1.3rem;
+        }
+
+        .product-item p {
+            font-weight: 500;
+            font-size: 1rem;
+            color: var(--color-neutral);
+        }
+
+        /* --- CONTACT PAGE --- */
+        #contact {
+            background-color: var(--color-secondary);
+            color: var(--color-text-light);
+        }
+
+        #contact h2 {
+            color: var(--color-text-light);
+        }
+
+        #contact .contact-form-container {
+            max-width: 600px;
+            margin-top: 40px;
+        }
+
+        #contact .contact-form {
+            display: grid;
+            gap: 20px;
+        }
+
+        #contact .contact-form input,
+        #contact .contact-form textarea {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--color-primary);
+        }
+
+        #contact .contact-form textarea {
+            resize: vertical;
+        }
+
+        #contact .contact-form button {
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease;
+        }
+
+        #contact .contact-form button:hover {
+            background-color: #555;
+        }
+
+        /* ========================================================================= */
+        /* --- FOOTER --- */
+        /* ========================================================================= */
+        .site-footer {
+            padding: 40px 0;
+            background-color: var(--color-primary);
+            color: var(--color-text-light);
+            text-align: center;
+        }
+
+        .site-footer p {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+
+        /* ========================================================================= */
+        /* --- MEDIA QUERIES (RESPONSIVE DESIGN) --- */
+        /* ========================================================================= */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            .site-header {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            .logo {
+                margin-bottom: 10px;
+            }
+
+            .nav-menu a {
+                margin: 0 10px;
+            }
+
+            #home .hero-text h1 {
+                font-size: 2.5rem;
+            }
+
+            #home .hero-text p {
+                font-size: 1rem;
+            }
+            
+            #about .about-content {
+                flex-direction: column;
+                gap: 30px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-    <header class="hero-section" id="hero">
-        <div class="hero-content">
-            <h1 class="font-serif">Crafted for the Journey, Designed for Life.</h1>
-            <a href="#collection" class="cta-button">Shop Our Collection</a>
-        </div>
+    <header class="site-header">
+        <a href="#home" class="logo">RAHI ORIGINALS</a>
+        <nav class="nav-menu">
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#shop">Shop</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
 
-    <main>
-        <section class="section" id="story">
-            <div class="container">
-                <h2 class="font-serif">Our Journey</h2>
-                <p>
-                    From our studio in [Your City], we handcraft each bag with a passion for timeless design and a commitment to sustainable practices. RahiOriginals was born from a desire to create bags that are not just beautiful, but also built to last a lifetime. Every stitch tells a story of dedication and eco-conscious craftsmanship.
-                </p>
-                <p>
-                    We believe in quality over quantity, using ethically sourced materials to create original designs that you can be proud to carry. This is more than a business; it's our commitment to you and the planet.
-                </p>
-            </div>
-        </section>
+    <section id="home" class="section">
+        <div class="container hero-text">
+            <h1>Crafted for the Journey,<br>Designed for a Legacy.</h1>
+            <p>At Rahi Originals, we believe that a truly great bag is more than an accessory—it's a companion. Meticulously handcrafted from the finest materials, our collection is born from a legacy of honest craftsmanship and a deep respect for our world. Each piece is designed to be with you for a lifetime, carrying your story with every stitch.</p>
+            <a href="#shop" class="cta-button">Explore the Collection</a>
+        </div>
+    </section>
 
-        <section class="section" id="collection">
-            <div class="container">
-                <h2 class="font-serif">The Collection</h2>
-                <p>Explore our range of handcrafted tote, laptop, and travel bags.</p>
-                <div class="product-grid">
-                    <div class="product-item">
-                        <img src="https://via.placeholder.com/400" alt="Product Image 1">
-                        <h3>The Urban Commuter Tote</h3>
-                    </div>
-                    <div class="product-item">
-                        <img src="https://via.placeholder.com/400" alt="Product Image 2">
-                        <h3>The Minimalist Laptop Bag</h3>
-                    </div>
-                    <div class="product-item">
-                        <img src="https://via.placeholder.com/400" alt="Product Image 3">
-                        <h3>The Weekend Explorer</h3>
-                    </div>
+    <section id="about" class="section">
+        <div class="container about-content">
+            <div class="about-text">
+                <h2>The Story Woven Into Every Stitch.</h2>
+                <p>Our journey began not in a factory, but in a small workshop in [Your City], with a simple, yet profound mission: to create bags that matter. Inspired by the timeless art of a legacy of craftsmanship, we set out to build a brand that stands for authenticity and quality.</p>
+                <p>In an age of fast-fashion and fleeting trends, Rahi Originals is a return to enduring elegance. We take pride in our deliberate, thoughtful process—from the initial sketch to the final polish—ensuring every piece is not just made, but thoughtfully brought to life. Our name, Rahi, is the Hindi word for "traveler," a tribute to those who embark on a journey, and a promise that our bags are built to be with them, every step of the way.</p>
+            </div>
+            <img class="about-image" src="https://via.placeholder.com/600x400/DDBEA9/6B705C?text=Photo+of+the+Workshop" alt="Our Handcrafted Workshop">
+        </div>
+    </section>
+
+    <section id="shop" class="section">
+        <div class="container">
+            <h2>The Rahi Originals Collection</h2>
+            <p>Discover a collection where artistry meets function. Every item in our collection is a testament to our philosophy: that beautiful design should not compromise durability. Handcrafted in limited batches, each piece is a celebration of our commitment to quality, ensuring a unique and timeless piece for your collection.</p>
+            <div class="product-grid">
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/400x400/D07A3B/F7F7F7?text=The+Traveler+Tote" alt="The Traveler Tote">
+                    <h3>The Traveler Tote</h3>
+                    <p>A loyal companion for both daily errands and grand adventures. The Traveler Tote is an ode to minimalist design and maximum utility. Its clean lines and spacious interior are crafted to hold everything you need, while the reinforced straps and solid brass hardware promise an enduring elegance. Made from [Material, e.g., heavy-duty waxed canvas], it will develop a beautiful, unique patina that tells the story of your every journey.</p>
                 </div>
-                <a href="https://www.etsy.com/shop/RahiOriginals" class="cta-button" style="margin-top: 40px;">Shop All Bags on Etsy</a>
-            </div>
-        </section>
-
-        <section class="section" id="commitment">
-            <div class="container">
-                <h2 class="font-serif">Our Commitment</h2>
-                <p>
-                    We are proud to use only the finest ethically-sourced materials. From reclaimed leather to organic cotton canvas and solid brass hardware, every component is chosen with the health of the planet in mind. We believe that sustainable design is not a trend, but a responsibility.
-                </p>
-            </div>
-        </section>
-
-        <section class="section" id="testimonials">
-            <div class="container">
-                <h2 class="font-serif">What Our Customers Are Saying</h2>
-                <div class="testimonial-carousel">
-                    <div class="testimonial-item">
-                        <p>"Absolutely stunning craftsmanship! The quality is incredible and the design is so timeless. I've received so many compliments."</p>
-                        <footer>— Priya, Bengaluru</footer>
-                    </div>
-                    <div class="testimonial-item">
-                        <p>"My new favorite bag. It's so well-made and the perfect size for everything. I love that it's eco-friendly too!"</p>
-                        <footer>— Mark, Mumbai</footer>
-                    </div>
-                    <div class="testimonial-item">
-                        <p>"The best customer service and an even better product. The care that went into this bag is obvious. Highly recommend."</p>
-                        <footer>— Sarah, New Delhi</footer>
-                    </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/400x400/F8B661/3B2E40?text=The+Legacy+Backpack" alt="The Legacy Backpack">
+                    <h3>The Legacy Backpack</h3>
+                    <p>Built for the urban explorer and the modern professional. The Legacy Backpack combines refined aesthetics with intelligent design. Featuring dedicated compartments for your laptop and essentials, its ergonomic straps are designed for comfort. The rugged exterior, meticulously stitched by hand, protects your valuables and stands as a testament to craftsmanship that will last for generations.</p>
+                </div>
+                <div class="product-item">
+                    <img src="https://via.placeholder.com/400x400/DDBEA9/6B705C?text=The+Artisan+Pouch" alt="The Artisan Pouch">
+                    <h3>The Artisan Pouch</h3>
+                    <p>A testament to thoughtful details and purposeful design. The Artisan Pouch is the perfect companion for your everyday carry. It is crafted to hold your most essential items—from your phone and keys to your wallet—keeping them organized and secure. Its compact size and elegant silhouette make it a versatile accessory that beautifully complements any journey, big or small.</p>
                 </div>
             </div>
-        </section>
-    </main>
+            <a href="https://www.etsy.com/shop/RahiOriginals" class="cta-button" style="margin-top: 60px;">Shop Now on Etsy</a>
+        </div>
+    </section>
+
+    <section id="contact" class="section">
+        <div class="container contact-form-container">
+            <h2>Get in Touch</h2>
+            <p>We'd love to hear from you. Whether you have a question about our products or want to discuss a custom order, we're here to help. Your journey is important to us, and we are dedicated to providing you with the support you need. Please fill out the form below or reach out to us directly. We look forward to hearing from you.</p>
+            <form class="contact-form" action="#" method="post">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 
     <footer class="site-footer">
         <div class="container">
-            <div class="footer-cta">
-                <h3 class="font-serif">Join our community.</h3>
-                <p>Be the first to know about new designs and exclusive offers.</p>
-            </div>
-            <form class="email-signup" action="#" method="post">
-                <input type="email" name="email" placeholder="Your email address" required>
-                <button type="submit">Subscribe</button>
-            </form>
-            <div class="social-links" style="margin-top: 20px;">
-                <a href="#" style="text-decoration: none;">Instagram</a>
-                <a href="#" style="text-decoration: none;">Pinterest</a>
-            </div>
-            <p style="margin-top: 20px; font-size: 0.8rem;">&copy; 2025 RahiOriginals. All rights reserved.</p>
+            <p>&copy; 2025 Rahi Originals. All rights reserved.</p>
         </div>
     </footer>
 
 </body>
-</html>
+            </html>
+                
