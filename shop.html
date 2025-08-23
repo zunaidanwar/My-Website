@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop All | Rahi Originals</title>
+    <meta name="description" content="Explore the complete collection of handcrafted leather bags and accessories from Rahi Originals.">
+
+    <!-- Preconnect to Google Fonts for faster loading -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Montserrat:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- Link to your CSS file -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- Favicon -->
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+    <!-- SEO & Social Sharing Markup (Open Graph) -->
+    <meta property="og:title" content="Shop The Collection | Rahi Originals">
+    <meta property="og:description" content="Timeless design meets honest craftsmanship.">
+    <meta property="og:image" content="https://your-website.com/images/social-share-shop.jpg">
+    <meta property="og:url" content="https://your-website.com/shop.html">
+    <meta property="og:type" content="website">
+</head>
+<body>
+
+    <!-- ========================================================================= -->
+    <!-- HEADER (Same as other pages, but with active class updated)             -->
+    <!-- ========================================================================= -->
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo" aria-label="Rahi Originals Home">RAHI ORIGINALS</a>
+            
+            <nav class="nav-main">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="about.html" class="nav-link">Our Story</a>
+                <a href="shop.html" class="nav-link active">Shop</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+            </nav>
+
+            <div class="nav-icons">
+                <a href="#" aria-label="Search">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </a>
+                <a href="#" aria-label="Account">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                </a>
+                <a href="#" aria-label="Cart">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                </a>
+            </div>
+
+            <button class="nav-toggle" aria-label="Open navigation menu">
+                <span class="hamburger"></span>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <!-- ========================================================================= -->
+        <!-- SHOP HEADER                                                             -->
+        <!-- ========================================================================= -->
+        <section class="section-page-header text-center">
+            <div class="container">
+                <h1>The Collection</h1>
+                <p>Each piece is designed with purpose and built with integrity, ready to become a part of your story.</p>
+            </div>
+        </section>
+
+        <!-- ========================================================================= -->
+        <!-- SHOP GRID & FILTERS                                                     -->
+        <!-- ========================================================================= -->
+        <section class="section shop-section">
+            <div class="container">
+                <!-- Filters and Sorting Bar -->
+                <div class="shop-controls">
+                    <div class="filter-options">
+                        <!-- In a real app, these would be functional dropdowns or pop-ups -->
+                        <button class="filter-btn">Category</button>
+                        <button class="filter-btn">Material</button>
+                    </div>
+                    <div class="sort-options">
+                        <select name="sort" id="sort-select" aria-label="Sort products">
+                            <option value="featured">Featured</option>
+                            <option value="newest">Newest</option>
+                            <option value="price-asc">Price: Low to High</option>
+                            <option value="price-desc">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="shop-grid">
+                    <!-- Product 1 -->
+                    <a href="#" class="product-card">
+                        <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1590874133425-58586f561b6c?q=80&w=1887" alt="The Wayfarer Tote">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">The Wayfarer Tote</h3>
+                            <p class="product-price">$320</p>
+                        </div>
+                    </a>
+                    <!-- Product 2 -->
+                    <a href="#" class="product-card">
+                        <div class="product-image-wrapper">
+                             <img src="https://images.unsplash.com/photo-1553062407-98eeb6e0e5a8?q=80&w=1887" alt="The Nomad Backpack">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">The Nomad Backpack</h3>
+                            <p class="product-price">$450</p>
+                        </div>
+                    </a>
+                    <!-- Product 3 -->
+                    <a href="#" class="product-card">
+                         <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1524794285114-de983e224321?q=80&w=1887" alt="The Envoy Messenger">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">The Envoy Messenger</h3>
+                            <p class="product-price">$380</p>
+                        </div>
+                    </a>
+                    <!-- Product 4 -->
+                    <a href="#" class="product-card">
+                         <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1523779105320-d5cd24607fb2?q=80&w=1887" alt="The Scribe Portfolio">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">The Scribe Portfolio</h3>
+                            <p class="product-price">$250</p>
+                        </div>
+                    </a>
+                    <!-- Product 5 -->
+                    <a href="#" class="product-card">
+                         <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1622554153944-66c70f1a5a4a?q=80&w=1887" alt="The Weekender Duffle">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">The Weekender Duffle</h3>
+                            <p class="product-price">$520</p>
+                        </div>
+                    </a>
+                    <!-- Product 6 -->
+                    <a href="#" class="product-card">
+                         <div class="product-image-wrapper">
+                            <img src="https://images.unsplash.com/photo-1610290498389-3510e1983f47?q=80&w=1887" alt="The Compass Crossbody">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">The Compass Crossbody</h3>
+                            <p class="product-price">$290</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Pagination -->
+                <nav class="pagination">
+                    <a href="#" class="page-number current">1</a>
+                    <a href="#" class="page-number">2</a>
+                    <a href="#" class="page-number">→</a>
+                </nav>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- FOOTER (Same as other pages)                                            -->
+    <!-- ========================================================================= -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h4 class="footer-heading">RAHI ORIGINALS</h4>
+                    <p>Handcrafted leather goods for a lifetime of journeys. Designed with purpose, built with integrity.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Explore</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="shop.html">Shop</a></li>
+                        <li><a href="#">Journal</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Support</h4>
+                    <ul class="footer-links">
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Shipping & Returns</a></li>
+                        <li><a href="#">Care Guide</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 class="footer-heading">Stay Connected</h4>
+                    <p>Join our newsletter for exclusive offers and the latest collections.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email address" required>
+                        <button type="submit" aria-label="Subscribe">➔</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Rahi Originals. All Rights Reserved.</p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">IG</a>
+                    <a href="#" aria-label="Facebook">FB</a>
+                    <a href="#" aria-label="Pinterest">PI</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <script>
+        // Re-using the same script for the sticky header effect
+        const header = document.querySelector('.site-header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+    </script>
+
+</body>
+</html>
