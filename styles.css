@@ -1,0 +1,777 @@
+/* ========================================================================= */
+/* --- 1. GLOBAL & CORE STYLES --- */
+/* ========================================================================= */
+
+:root {
+    /* Color Palette */
+    --color-primary: #2c232f; /* Darker, richer purple-brown */
+    --color-secondary: #D07A3B; /* Burnt Orange for accents */
+    --color-background: #F9F8F6; /* Softer, warmer off-white */
+    --color-text: #3d3d3d; /* Softer black for body text */
+    --color-text-light: #F9F8F6;
+    --color-border: #e0e0e0;
+
+    /* Typography */
+    --font-serif: 'Cormorant Garamond', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --font-size-base: 16px;
+    --line-height-base: 1.7;
+
+    /* Layout */
+    --header-height: 80px;
+    --container-width: 1240px;
+    --container-padding: 20px;
+    --border-radius: 4px;
+
+    /* Transitions */
+    --transition-fast: 0.2s ease-in-out;
+    --transition-medium: 0.4s ease-in-out;
+}
+
+/* Basic Reset & Base Styles */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: var(--font-size-base);
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-background);
+    line-height: var(--line-height-base);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* Headings & Text */
+h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+h1 { font-size: clamp(2.5rem, 5vw, 4.5rem); } /* Fluid typography */
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); }
+p { margin-bottom: 1rem; max-width: 75ch; }
+a { color: inherit; text-decoration: none; }
+
+/* Layout & Utility Classes */
+.container {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+.section {
+    padding: 100px 0;
+}
+.section-title {
+    margin-bottom: 40px;
+}
+.text-center { text-align: center; }
+.grid-3-col {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr;
+}
+@media (min-width: 768px) {
+    .grid-3-col { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    cursor: pointer;
+    border: 1px solid transparent;
+}
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    border-color: var(--color-secondary);
+}
+.btn-primary:hover {
+    background-color: transparent;
+    color: var(--color-secondary);
+}
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+.btn-secondary:hover {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+}
+
+/* Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.8s forwards ease-out;
+}
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ========================================================================= */
+/* --- 2. HEADER & NAVIGATION (REVISED) --- */
+/* ========================================================================= */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    height: var(--header-height);
+    background-color: transparent;
+    transition: background-color var(--transition-medium), box-shadow var(--transition-medium);
+}
+.site-header.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+.header-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    padding: 0 var(--container-padding);
+    max-width: var(--container-width);
+    margin: 0 auto;
+}
+.logo {
+    font-family: var(--font-serif);
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: 1px;
+    color: var(--color-primary);
+    /* The logo no longer needs to be pushed, flexbox will handle it */
+}
+
+/* This is the key change for alignment */
+.nav-main {
+    display: none; /* Hidden on mobile */
+    margin: 0 auto; /* Magically centers the nav between the logo and icons */
+}
+
+.nav-icons { display: none; } /* Hidden on mobile */
+.nav-toggle { 
+    display: block; 
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    margin-left: auto; /* Pushes hamburger to the right on mobile */
+}
+
+/* Desktop Styles */
+@media (min-width: 992px) {
+    .nav-main {
+        display: flex;
+        gap: 40px;
+    }
+    .nav-link {
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        padding: 5px 0;
+        color: var(--color-primary);
+        transition: color var(--transition-fast);
+    }
+    .nav-link:hover {
+        color: var(--color-secondary);
+    }
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: var(--color-secondary);
+        transition: width var(--transition-fast);
+    }
+    .nav-link:hover::after, .nav-link.active::after {
+        width: 100%;
+    }
+    .nav-icons {
+        display: flex;
+        gap: 24px;
+    }
+    .nav-icons a {
+        color: var(--color-primary);
+        transition: color var(--transition-fast);
+    }
+    .nav-icons a:hover {
+        color: var(--color-secondary);
+    }
+    .nav-toggle {
+        display: none;
+    }
+}
+
+/* ========================================================================= */
+/* --- 3. PAGE-SPECIFIC STYLES (HOME) --- */
+/* ========================================================================= */
+
+/* --- HERO --- */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+    overflow: hidden;
+}
+.hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1566150905458-1bf1bc112f2d?q=80&w=2071');
+    background-size: cover;
+    background-position: center;
+    animation: zoom-in 20s infinite alternate;
+}
+@keyframes zoom-in { 
+    from { transform: scale(1); } 
+    to { transform: scale(1.1); }
+}
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(44, 35, 47, 0.5); /* Overlay from --color-primary */
+}
+.hero-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 var(--container-padding);
+}
+.hero-title {
+    color: var(--color-text-light);
+    margin-bottom: 1rem;
+}
+.hero-subtitle {
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-bottom: 2rem;
+    max-width: 600px;
+}
+.hero .btn-primary:hover { /* Custom hover for hero */
+    background-color: var(--color-text-light);
+    color: var(--color-primary);
+    border-color: var(--color-text-light);
+}
+
+/* --- VALUES --- */
+.section-values { background-color: #fff; }
+.value-item { text-align: center; }
+.value-item .value-icon { /* Style your SVGs here */ margin-bottom: 1rem; height: 40px; }
+
+/* --- FEATURED PRODUCTS --- */
+.product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+@media (min-width: 768px) { .product-grid { grid-template-columns: repeat(3, 1fr); } }
+.product-card {
+    text-align: center;
+    transition: transform var(--transition-fast);
+}
+.product-card:hover { transform: translateY(-5px); }
+.product-image-wrapper {
+    overflow: hidden;
+    background-color: #eee; /* Placeholder bg */
+}
+.product-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+}
+.product-card:hover img { transform: scale(1.05); }
+.product-info { padding: 20px 10px; }
+.product-name { color: var(--color-primary); font-size: 1.1rem; }
+.product-price { color: var(--color-text); font-weight: 500; }
+
+/* --- STORY TEASER --- */
+.section-story { background-color: var(--color-background); }
+.story-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: center;
+    gap: 50px;
+}
+@media (min-width: 992px) {
+    .story-container { grid-template-columns: 1fr 1fr; gap: 80px; }
+}
+.story-image {
+    width: 100%;
+    height: 500px;
+    background-image: url('https://images.unsplash.com/photo-1621243553818-0624a0d9225c?q=80&w=1887');
+    background-size: cover;
+    background-position: center;
+}
+.story-content { text-align: left; }
+
+/* --- SOCIAL PROOF --- */
+.section-social-proof { background-color: #fff; }
+.testimonial blockquote {
+    font-family: var(--font-serif);
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto 1rem auto;
+    font-style: italic;
+}
+.testimonial cite {
+    font-style: normal;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+}
+.as-seen-on { margin-top: 60px; }
+.as-seen-on h4 {
+    color: #999;
+    font-family: var(--font-sans);
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+}
+.as-seen-on .logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap;
+    font-family: var(--font-serif);
+    font-weight: 700;
+    color: #aaa;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+/* ========================================================================= */
+/* --- 4. FOOTER --- */
+/* ========================================================================= */
+.site-footer {
+    background-color: var(--color-primary);
+    color: var(--color-text-light);
+    padding: 80px 0 40px 0;
+}
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+@media (min-width: 768px) {
+    .footer-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 992px) {
+    .footer-grid { grid-template-columns: 2fr 1fr 1fr 2fr; }
+}
+.footer-heading {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.footer-col p { color: rgba(255,255,255,0.7); font-size: 0.9rem; }
+.footer-links { list-style: none; }
+.footer-links a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition-fast);
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+}
+.footer-links a:hover { color: var(--color-secondary); }
+.newsletter-form {
+    display: flex;
+    margin-top: 15px;
+}
+.newsletter-form input {
+    width: 100%;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 12px;
+    color: #fff;
+}
+.newsletter-form input::placeholder { color: rgba(255,255,255,0.5); }
+.newsletter-form button {
+    background-color: var(--color-secondary);
+    color: #fff;
+    border: none;
+    padding: 0 20px;
+    cursor: pointer;
+    font-size: 1.5rem;
+}
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.2);
+    padding-top: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+}
+@media (min-width: 768px) { .footer-bottom { flex-direction: row; } }
+.footer-bottom p { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin: 0; }
+.social-links { display: flex; gap: 20px; }
+.social-links a {
+    color: rgba(255,255,255,0.7);
+    transition: color var(--transition-fast);
+}
+.social-links a:hover { color: #fff; }
+
+/* ========================================================================= */
+/* --- 5. PAGE-SPECIFIC STYLES (ABOUT) --- */
+/* ========================================================================= */
+
+/* --- ABOUT HERO --- */
+.about-hero {
+    position: relative;
+    height: 70vh; /* A slightly shorter hero for internal pages */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-text-light);
+    overflow: hidden;
+}
+.about-hero-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('https://images.unsplash.com/photo-1528834379733-ceb2f92b7125?q=80&w=1974');
+    background-size: cover;
+    background-position: center 40%;
+    animation: zoom-in 20s infinite alternate; /* Re-using the zoom effect */
+}
+.about-hero .hero-title {
+    font-size: clamp(2.2rem, 5vw, 4rem); /* Slightly smaller title for sub-pages */
+}
+
+/* --- SPLIT LAYOUT (Founder's Story) --- */
+.split-layout {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 40px;
+    align-items: center;
+}
+@media (min-width: 992px) {
+    .split-layout {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 80px;
+    }
+}
+.split-layout-image img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+.split-layout-content p {
+    font-size: 1.05rem;
+    color: var(--color-text);
+}
+.split-layout-content .section-title {
+    text-align: left;
+}
+
+/* --- PHILOSOPHY SECTION --- */
+.section-philosophy {
+    background-color: #fff;
+}
+.section-philosophy .value-item {
+    padding: 0 15px;
+}
+.section-philosophy .value-icon {
+    color: var(--color-secondary);
+    margin-bottom: 1.5rem;
+}
+.section-philosophy h3 {
+    margin-bottom: 0.5rem;
+}
+
+/* --- ARTISAN SECTION --- */
+.section-artisan {
+    padding: 0; /* Remove padding to allow full-bleed image */
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: var(--color-background);
+}
+@media (min-width: 992px) {
+    .section-artisan {
+        grid-template-columns: repeat(2, 1fr);
+        min-height: 600px;
+    }
+}
+.artisan-image {
+    min-height: 400px;
+    background-image: url('https://images.unsplash.com/photo-1596009199923-a23c004a3412?q=80&w=1887');
+    background-size: cover;
+    background-position: center;
+}
+.artisan-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 60px var(--container-padding);
+}
+.artisan-text {
+    max-width: 500px;
+}
+.artisan-text h2 {
+    margin-bottom: 1.5rem;
+}
+.artisan-text .btn {
+    margin-top: 1.5rem;
+}
+/* ========================================================================= */
+/* --- 6. PAGE-SPECIFIC STYLES (CONTACT) --- */
+/* ========================================================================= */
+
+/* --- GENERIC PAGE HEADER (for Contact, Shop, etc.) --- */
+.section-page-header {
+    padding: 160px 0 60px 0; /* More padding top to clear the header */
+    background-color: #fff;
+}
+.section-page-header h1 {
+    margin-bottom: 1rem;
+}
+.section-page-header p {
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+/* --- CONTACT SECTION --- */
+.contact-section {
+    padding-top: 60px;
+    padding-bottom: 100px;
+}
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 60px;
+}
+@media (min-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr 1.25fr; /* Info side is slightly smaller */
+        gap: 80px;
+    }
+}
+.contact-info h3,
+.contact-form-wrapper h3 {
+    margin-bottom: 1.5rem;
+}
+.contact-info p {
+    margin-bottom: 2.5rem;
+}
+.info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 2rem;
+}
+.info-icon {
+    flex-shrink: 0;
+    color: var(--color-secondary);
+    margin-top: 4px;
+}
+.info-item h4 {
+    margin-bottom: 0.25rem;
+    font-size: 1.1rem;
+}
+.info-item p, .info-item a {
+    margin: 0;
+    color: var(--color-text);
+    transition: color var(--transition-fast);
+}
+.info-item a:hover {
+    color: var(--color-secondary);
+}
+
+/* --- CONTACT FORM --- */
+.contact-form-wrapper {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+@media (max-width: 768px) {
+    .contact-form-wrapper {
+        padding: 30px 20px;
+    }
+}
+
+.contact-form .form-group {
+    margin-bottom: 1.5rem;
+}
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-primary);
+}
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    font-family: var(--font-sans);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+    box-shadow: 0 0 0 3px rgba(208, 122, 59, 0.2);
+}
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+    font-size: 1rem;
+}
+/* ========================================================================= */
+/* --- 7. PAGE-SPECIFIC STYLES (SHOP) --- */
+/* ========================================================================= */
+
+.shop-section {
+    padding-top: 60px;
+}
+
+/* --- SHOP CONTROLS (Filters & Sorting) --- */
+.shop-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 20px;
+}
+
+.filter-options {
+    display: flex;
+    gap: 15px;
+}
+
+.filter-btn {
+    background: none;
+    border: 1px solid var(--color-border);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    font-family: var(--font-sans);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+.filter-btn:hover {
+    background-color: var(--color-background);
+    border-color: #ccc;
+}
+
+.sort-options select {
+    border: 1px solid var(--color-border);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    font-family: var(--font-sans);
+    background-color: #fff;
+    -webkit-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' viewBox='0 0 16 16'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px; /* Make space for arrow */
+}
+
+
+/* --- SHOP GRID --- */
+.shop-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columns on mobile */
+    gap: 20px;
+}
+
+@media (min-width: 768px) {
+    .shop-grid {
+        grid-template-columns: repeat(3, 1fr); /* 3 columns on tablet and up */
+        gap: 30px;
+    }
+}
+/* We can re-use the .product-card styles from the homepage for consistency */
+.shop-grid .product-card .product-name {
+    font-size: 1rem;
+}
+.shop-grid .product-card .product-price {
+    font-size: 0.9rem;
+}
+
+
+/* --- PAGINATION --- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 60px;
+}
+.page-number {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+}
+.page-number:hover {
+    background-color: var(--color-background);
+    border-color: #ccc;
+}
+.page-number.current {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-text-light);
+    font-weight: 700;
+}
