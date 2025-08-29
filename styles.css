@@ -135,7 +135,7 @@ a { color: inherit; text-decoration: none; }
 /* ========================================================================= */
 .site-header {
     position: fixed;
-    top: 0;
+    top: 39px; /*for dev notice*/
     left: 0;
     width: 100%;
     z-index: 1000;
@@ -775,3 +775,22 @@ a { color: inherit; text-decoration: none; }
     color: var(--color-text-light);
     font-weight: 700;
 }
+/* ========================================================================= */
+/* --- 8. DEVELOPMENT BANNER --- */
+/* ========================================================================= */
+
+.dev-banner {
+    background-color: var(--color-secondary); /* Uses your brand's orange color */
+    color: var(--color-text-light); /* Uses the light text color */
+    text-align: center;
+    padding: 8px 15px;
+    width: 100%;
+    z-index: 1001; /* Sits on top of everything except the header */
+    position: relative;
+}
+.dev-banner p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
